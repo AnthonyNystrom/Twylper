@@ -1,0 +1,45 @@
+<?php
+/* production settings - don't show errors
+error_reporting(E_ALL);
+ ini_set("display_errors", 1);
+*/
+
+// Output buffering
+ob_start();
+
+date_default_timezone_set('America/Chicago');
+
+// Database
+define('DB_NAME', '');
+define('DB_HOST', 'localhost');
+define('DB_USER', '');
+define('DB_PASS', '');
+
+$db	= mysql_connect(DB_HOST, DB_USER, DB_PASS) OR db_error();
+mysql_select_db(DB_NAME, $db) OR db_error();
+
+define('CONSUMER_KEY', '');
+define('CONSUMER_SECRET', '');
+define('OAUTH_CALLBACK', '');
+
+define('COOKIE_NAME', '');
+define('COOKIE_DOMAIN', '');
+
+// Site settings
+define('SITE_NAME', '');
+define('SITE_META_TITLE', '');
+define('SITE_SHORT_URL', '');
+define('SITE_IMG_PATH', '');
+define('STRING_LENGTH', 5);
+define('NO_PHOTO', '/images/nophoto.jpg');
+define('RESULTS_PER_PAGE', 10);
+define('NUM_TOP_USERS', 15);
+define('NUM_THREADS', 10);
+define('AVATAR_PATH', '');
+define('AVATAR_PATH_URL', '/images/avatars');
+define('AVATAR_DEFAULT', 'http://s.twimg.com/a/1280356346/images/default_profile_0_normal.png');
+
+// Twitter API (DEPRECATED)
+define('TWITTER_VERIFY_URL', 'http://twitter.com/account/verify_credentials.xml');
+define('TWITTER_UPDATE_URL', 'http://twitter.com/statuses/update.xml');
+?>

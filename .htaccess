@@ -1,0 +1,44 @@
+RewriteEngine On                                                                                                                                          
+
+#redirect to canonical url (non www)
+RewriteCond %{HTTP_HOST} ^www.twylper.com [NC]
+RewriteRule ^(.*)$ http://twylper.com/$1 [L,R=301]
+                                                                                                                                                          
+Options -Indexes                                                                                                                                          
+                                                                                                                                          
+# Tweet Redirect URLs                                                                                                                                     
+RewriteRule ^r/([0-9]+)$                                redirect.php?d_id=$1                                                                              
+                                                                                                                                                          
+# Topics pagination                                                                                                                                       
+RewriteRule ^topics/(.*)/([0-9]+)$              topics.php?page=$2&sort=$1 [L]                                                                            
+RewriteRule ^topics/([0-9]+)$                   topics.php?page=$1 [L]                                                                                    
+RewriteRule ^replies/(.*)/([0-9]+)$             replies.php?page=$2&sort=$1 [L]                                                                           
+RewriteRule ^replies/([0-9]+)$                  replies.php?page=$1 [L]                                                                                   
+                                                                                                                                                          
+# Main navigation                                                                                                                                         
+RewriteRule ^index$                                             index.php [L]                                                                             
+RewriteRule ^topics/popular$                    topics.php?sort=popular [L]                                                                               
+RewriteRule ^topics/recent$                             topics.php?sort=recent [L]                                                                        
+RewriteRule ^topics$                                    topics.php [L]                                                                                    
+RewriteRule ^create$                                    create.php [L]                                                                                    
+RewriteRule ^logout$                                    logout.php [L]                                                                                    
+RewriteRule ^map$				map.php [L]
+RewriteRule ^about$				about.php [L]
+RewriteRule ^login$                                             login.php [L]                                                                             
+RewriteRule ^contact$                                   contact.php [L]                                                                                   
+RewriteRule ^how$                                               how.php [L]                                                                               
+RewriteRule ^replies$                                   replies.php [L]                                                                                   
+RewriteRule ^google-wave$                               google_wave.php [L]                                                                               
+                                                                                                                                                          
+# Account                                                                                                                                                 
+RewriteRule ^account/notifications              account.php?action=notifications [L]                                                                      
+RewriteRule ^account/settings                   account.php?action=settings [L]                                                                           
+RewriteRule ^account$                                   account.php [L]                                                                                   
+                                                                                                                                                          
+# Profile                                                                                                                                                 
+RewriteRule ^profile/(.*)/(.*)/([0-9]+)$        topics.php?user=$1&sort=$2&page=$3 [L]                                                                    
+RewriteRule ^profile/(.*)/(.*)$                         topics.php?user=$1&sort=$2 [L]                                                                    
+RewriteRule ^profile/(.*)$                                      topics.php?user=$1 [L]                                                                    
+                                                                                                                                                          
+# Dynamic discussions                                                                                                                                     
+RewriteRule ^([0-9A-Za-z]+)$                    discussions.php?id=$1 [L]             
